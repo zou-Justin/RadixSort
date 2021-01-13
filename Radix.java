@@ -17,11 +17,11 @@ public class Radix{
     int tens = (int) Math.floor(Math.log10(n));
     return tens + 1;
   }
-  public static void merge(MyLinkedList original,MyLinkedList[]buckets){
-    for (int i = 0; i < buckets.length;i++){
-      original.extend(buckets[i]);
-    }
-  }
+  // public static void merge(MyLinkedList original,MyLinkedList[]buckets){
+  //   for (int i = 0; i < buckets.length;i++){
+  //     original.extend(buckets[i]);
+  //   }
+  // }
   public static void merge(SortableLinkedList original, SortableLinkedList[]buckets){
     for (int i = 0; i < buckets.length;i++){
       original.extend(buckets[i]);
@@ -33,19 +33,15 @@ public class Radix{
     for (int i = 0; i < 10 ;i++){
       buckets[i] = new SortableLinkedList();
     }
-    int maxLength = 0;
-    for (int i = 0; i < data.size(); i++){
-      if (maxLength < length(data.get(i))) {
-        maxLength = length(data.get(i));
+    int maxLength = data.get(0);
+    for (int i = 0; i < maxLength;i++){
+      while (data.size() > 0){
+        if ()
+        
+        data.remove(0);
       }
     }
-     for (int i = 0; i < maxLength;i++){
-      for (int j = 0; j < data.size();j++){
-        buckets[nth(data.get(j),i)].add(data.get(j));
-      }
-      reset(data);
-      merge(data,buckets);
-    }
+     merge(data,buckets);
   }
   public static void reset(SortableLinkedList stuff){
     SortableLinkedList temp = new SortableLinkedList();
@@ -68,11 +64,11 @@ public class Radix{
     }
     for (int i = 0; i < maxLength;i++){
       for (int j = 0;j < data.size();j++){
-        if (data.get(j) < 0){
-          NegBuckets[nth(data.get(j),i)].add(data.get(j));
+        if (data.get(j) >= 0){
+          PosBuckets[nth(data.get(j),i)].add(data.get(j));  
         }
         else{
-          PosBuckets[nth(data.get(j),i)].add(data.get(j));
+          NegBuckets[nth(data.get(j),i)].add(data.get(data.get(j)));
         }
         reset(data);
         merge(data,NegBuckets);
