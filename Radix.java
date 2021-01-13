@@ -19,26 +19,52 @@ public class Radix{
       original.extend(buckets[i]);
     }
   }
-  public static void merge( SortableLinkedList original, SortableLinkedList[]buckets){
+  public static void merge(SortableLinkedList original, SortableLinkedList[]buckets){
     for (int i = 0; i < buckets.length;i++){
       original.extend(buckets[i]);
     }
   }
+  
+  public static void radixSortSimple(SortableLinkedList data){
+    SortableLinkedList[]buckets = new SortableLinkedList[10];
+    SortableLinkedList temp = new SortableLinkedList();
+    for (int i = 0; i < 10 ;i++){
+      buckets[i] = new SortableLinkedList();
+    }
+    int maxLength = 0;
+    for (int i = 0; i < data.size(); i++){
+      if (maxLength < length(data.get(i))) {
+        maxLength = length(data.get(i));
+      }
+    }
+    for (int i = 0; i < maxLength;i++){
+      for (int j = 0; j < data.size(); j++){
+        buckets[nth(data.get(j),i)].add(data.get(j));
+      }
+      merge(temp,buckets);
+      reset(temp);
+    }
+  }
+  public static void reset(SortableLinkedList stuff){
+    SortableLinkedList temp = new SortableLinkedList();
+    temp.extend(stuff);
+    
+  }
   public static void main (String[]agrs){
-    MyLinkedList m = new MyLinkedList();
-    m.add("hello1");
-    m.add("bob1");
-    MyLinkedList c = new MyLinkedList();
-    c.add("hello2");
-    c.add("bob2");
-    MyLinkedList a = new MyLinkedList();
-    a.add("hello3");
-    a.add("bob3");
-    MyLinkedList[]b = new MyLinkedList[]{c,a};
+    SortableLinkedList m = new SortableLinkedList();
+    m.add(2);
+    m.add(3);
+    SortableLinkedList c = new SortableLinkedList();
+    c.add(4);
+    c.add(5);
+    SortableLinkedList a = new SortableLinkedList();
+    a.add(234);
+    a.add(-213);
+    SortableLinkedList[]b = new SortableLinkedList[]{c,a};
     merge(m,b);
     System.out.println(m);
     
-    System.out.println(nth(123,1));
+    System.out.println(nth(123,4));
     System.out.println(nth(-123,1));
     System.out.println(nth(123,2)); 
     System.out.println(nth(-123,2));
