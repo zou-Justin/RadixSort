@@ -45,12 +45,13 @@ public class Radix{
       }
       reset(data);
       merge(data,buckets);
-    
     }
   }
   public static void reset(SortableLinkedList stuff){
     SortableLinkedList temp = new SortableLinkedList();
     temp.extend(stuff);
+  }
+  public static void radixSort(SortableLinkedList data){
     
   }
   public static void main (String[]agrs){
