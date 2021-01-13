@@ -2,6 +2,9 @@ import java.lang.*;
 
 public class Radix{
   public static int nth(int n, int col){
+    if (col == 0){
+      return n % 10;
+    }
     int amountTodivide = (int) Math.floor(Math.pow(10,col));
     n /= amountTodivide;
     n = n % amountTodivide;
@@ -27,7 +30,6 @@ public class Radix{
   
   public static void radixSortSimple(SortableLinkedList data){
     SortableLinkedList[]buckets = new SortableLinkedList[10];
-    SortableLinkedList temp = new SortableLinkedList();
     for (int i = 0; i < 10 ;i++){
       buckets[i] = new SortableLinkedList();
     }
@@ -37,12 +39,13 @@ public class Radix{
         maxLength = length(data.get(i));
       }
     }
-    for (int i = 0; i < maxLength;i++){
-      for (int j = 0; j < data.size(); j++){
+     for (int i = 0; i < maxLength;i++){
+      for (int j = 0; j < data.size();j++){
         buckets[nth(data.get(j),i)].add(data.get(j));
       }
-      merge(temp,buckets);
-      reset(temp);
+      reset(data);
+      merge(data,buckets);
+    
     }
   }
   public static void reset(SortableLinkedList stuff){
@@ -55,16 +58,22 @@ public class Radix{
     m.add(2);
     m.add(3);
     SortableLinkedList c = new SortableLinkedList();
-    c.add(4);
+    c.add(24);
     c.add(5);
     SortableLinkedList a = new SortableLinkedList();
-    a.add(234);
-    a.add(-213);
-    SortableLinkedList[]b = new SortableLinkedList[]{c,a};
-    merge(m,b);
-    System.out.println(m);
+    a.add(224);
+    a.add(13);
+    a.add(11);
+    a.add(22);
+    a.add(31);
+    a.add(1);
+    radixSortSimple(a);
+    System.out.println(a);
+    // SortableLinkedList[]b = new SortableLinkedList[]{c,a};
+    // merge(m,b);
+    // System.out.println(m);
     
-    System.out.println(nth(123,4));
+    System.out.println(nth(123,0));
     System.out.println(nth(-123,1));
     System.out.println(nth(123,2)); 
     System.out.println(nth(-123,2));
