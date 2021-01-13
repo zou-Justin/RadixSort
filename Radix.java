@@ -15,9 +15,24 @@ public class Radix{
     return tens + 1;
   }
   public static void merge(MyLinkedList original,MyLinkedList[]buckets){
-    
+    for (int i = 0; i < buckets.length;i++){
+      original.extend(buckets[i]);
+    }
   }
   public static void main (String[]agrs){
+    MyLinkedList m = new MyLinkedList();
+    m.add("hello1");
+    m.add("bob1");
+    MyLinkedList c = new MyLinkedList();
+    c.add("hello2");
+    c.add("bob2");
+    MyLinkedList a = new MyLinkedList();
+    a.add("hello3");
+    a.add("bob3");
+    MyLinkedList[]b = new MyLinkedList[]{c,a};
+    merge(m,b);
+    System.out.println(m);
+    
     System.out.println(nth(123,1));
     System.out.println(nth(-123,1));
     System.out.println(nth(123,2)); 
