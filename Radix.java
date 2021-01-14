@@ -1,13 +1,14 @@
 import java.lang.*;
 
 public class Radix{
+  
   public static int nth(int n, int col){
     if (col == 0){
       return n % 10;
     }
-    int amountTodivide = (int) Math.floor(Math.pow(10,col));
-    n /= amountTodivide;
-    n = n % amountTodivide;
+    int amountTodivide = (int) Math.pow(10,col);
+    n = (int) n / amountTodivide;
+    n = n % 10;
     return Math.abs(n);
   }
   public static int length(int n){
@@ -29,23 +30,23 @@ public class Radix{
   }
   
   public static void radixSortSimple(SortableLinkedList data){
+    int temp = 0;
     SortableLinkedList[]buckets = new SortableLinkedList[10];
     for (int i = 0; i < 10 ;i++){
       buckets[i] = new SortableLinkedList();
     }
-    int maxLength = data.get(0);
+    int maxLength = length(data.get(0));
     for (int i = 0; i < maxLength;i++){
       while (data.size() > 0){
-        if ()
-        
+        temp = data.get(0);
+        buckets[nth(temp,i)].add(temp);
+        if (length(temp) > maxLength){
+          maxLength = length(temp);
+        }
         data.remove(0);
       }
+       merge(data,buckets);
     }
-     merge(data,buckets);
-  }
-  public static void reset(SortableLinkedList stuff){
-    SortableLinkedList temp = new SortableLinkedList();
-    temp.extend(stuff);
   }
   public static void radixSort(SortableLinkedList data){
     SortableLinkedList[]PosBuckets = new SortableLinkedList[10];
@@ -70,7 +71,7 @@ public class Radix{
         else{
           NegBuckets[nth(data.get(j),i)].add(data.get(data.get(j)));
         }
-        reset(data);
+        //reset(data);
         merge(data,NegBuckets);
         merge(data,PosBuckets);
       }
