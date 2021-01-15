@@ -10,13 +10,13 @@ public class Tester {
     c.add(24);
     c.add(5);
     SortableLinkedList a = new SortableLinkedList();
-    a.add(224);
+    a.add(-224);
     a.add(13);
     a.add(11);
     a.add(22);
     a.add(-31);
     a.add(1);
-    Radix.radixSort(a);
+    System.out.println(Radix.radixSort(a));
     System.out.println(a);
     // SortableLinkedList[]b = new SortableLinkedList[]{c,a};
     // merge(m,b);

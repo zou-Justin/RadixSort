@@ -49,14 +49,15 @@ public class Radix{
        merge(data,buckets);
     }
   }
-  public static void radixSort(SortableLinkedList data){
+  public static SortableLinkedList radixSort(SortableLinkedList data){
     int temp = 0;
+    SortableLinkedList tempData = new SortableLinkedList();
     SortableLinkedList[]PosBuckets = new SortableLinkedList[10];
     SortableLinkedList[]NegBuckets = new SortableLinkedList[10];
     for (int i = 0; i < 10 ;i++){
       PosBuckets[i] = new SortableLinkedList();
     }
-    for (int i = 9; i >= 0;i--){
+    for (int i = 0; i < 10;i++){
       NegBuckets[i] = new SortableLinkedList();
     }
     int maxLength = length(data.get(0));
@@ -69,11 +70,23 @@ public class Radix{
         else{
           NegBuckets[nth(temp,i)].add(temp);
         }
+        if (length(temp) > maxLength){
+          maxLength = length(temp);
+        }
         data.remove(0);  
       }
-      merge(data,NegBuckets);
+      merge(tempData,NegBuckets);
       merge(data,PosBuckets);
     }
+    int size = tempData.size()-1;
+    for (int i = tempData.size(); i > 0;i--){
+      int temp2 = tempData.get(size);
+      tempData.add(temp2);
+      tempData.remove(size);
+      size--;
+    }
+    return tempData;
+    //(data).extend(tempData);
   }
   
 
