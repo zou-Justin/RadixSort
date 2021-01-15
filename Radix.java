@@ -49,7 +49,7 @@ public class Radix{
        merge(data,buckets);
     }
   }
-  public static SortableLinkedList radixSort(SortableLinkedList data){
+  public static void radixSort(SortableLinkedList data){
     int temp = 0;
     SortableLinkedList tempData = new SortableLinkedList();
     SortableLinkedList[]PosBuckets = new SortableLinkedList[10];
@@ -98,7 +98,6 @@ public class Radix{
           size++;
         }
     }
-    return data;
   }
   
 
