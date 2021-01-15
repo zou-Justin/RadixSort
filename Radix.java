@@ -62,7 +62,7 @@ public class Radix{
     }
     int maxLength = length(data.get(0));
     for (int i = 0; i < maxLength;i++){
-        while (data.size() > 0){
+      while (data.size() > 0){
         temp = data.get(0);
         if (temp >= 0){
             PosBuckets[nth(temp,i)].add(temp);  
@@ -75,18 +75,30 @@ public class Radix{
         }
         data.remove(0);  
       }
-      merge(tempData,NegBuckets);
       merge(data,PosBuckets);
+      merge(data,NegBuckets);
+      
     }
-    int size = tempData.size()-1;
-    for (int i = tempData.size(); i > 0;i--){
-      int temp2 = tempData.get(size);
-      tempData.add(temp2);
-      tempData.remove(size);
-      size--;
+    
+    int size = data.size()-1;
+    for (int i = data.size(); i > 0;i--){
+      int temp1 = data.get(size);
+      if (temp1 < 0){
+        data.add(temp1);
+        data.remove(size);
+        size--;
+      }
     }
-    return tempData;
-    //(data).extend(tempData);
+    int size2 = 0;
+    for (int i = 0; i < data.size();i++){
+      int temp2 = data.get(0);
+        if (temp2 >= 0){
+          data.add(temp2);
+          data.remove(size2);
+          size++;
+        }
+    }
+    return data;
   }
   
 
