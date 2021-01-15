@@ -95,7 +95,7 @@ public class Radix{
         if (temp2 >= 0){
           data.add(temp2);
           data.remove(size2);
-          size++;
+          size2++;
         }
     }
   }
