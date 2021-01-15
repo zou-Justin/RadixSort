@@ -12,9 +12,9 @@ public class Tester {
     SortableLinkedList a = new SortableLinkedList();
     a.add(224);
     a.add(13);
-    a.add(-11);
+    a.add(11);
     a.add(22);
-    a.add(31);
+    a.add(-31);
     a.add(1);
     Radix.radixSort(a);
     System.out.println(a);
@@ -22,11 +22,11 @@ public class Tester {
     // merge(m,b);
     // System.out.println(m);
     
-    System.out.println(Radix.nth(123,0));
-    System.out.println(Radix.nth(-123,1));
+    System.out.println(Radix.nth(112323,3));
+    System.out.println(Radix.nth(-123,0));
     System.out.println(Radix.nth(123,2)); 
     System.out.println(Radix.nth(-123,2));
     System.out.println(Radix.nth(123,1));
-    System.out.println(Radix.length(-10));
+    System.out.println(Radix.length(12310));
   }
 }
